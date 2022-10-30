@@ -1,0 +1,16 @@
+{
+  "name": "node-socket-io",
+  "version": "1.0.0",
+  "description": "",
+  "main": "src/index.js",
+  "scripts": {
+    "start": "node src/",
+    "dev": "nodemon src/"
+  },
+  "author": "John Daniels",
+  "license": "ISC",
+  "dependencies": {
+    "express": "^4.18.2",
+    "socket.io": "^4.5.3"
+  }
+}
