@@ -1,31 +1,17 @@
-const http = require("http")
-const express = require("express")
-const { Server } = require("socket.io")
+import http from "http"
+import express from "express"
+import initializeSockets from "./controllers/sockets/socket.controller.js"
 
 const port = process.env.PORT || 5000
+
 const app = express()
 app.get("/", (req, res) => {
-  res.send("welcome to my web socket")
+  res.send("welcome to my chat-app server")
 })
+
 const server = http.createServer(app)
 
-const io = new Server(server, {
-  cors: {
-    origin: "*",
-  },
-})
-
-io.on("connection", (client) => {
-  console.log("new client connection", client.id)
-  client.on("position-change", (data) => {
-    console.log(data)
-    client.broadcast.emit("position-change", data)
-  })
-
-  client.on("disconnect", () => {
-    console.log("client disconnect")
-  })
-})
+initializeSockets(server)
 
 server.listen(port, () => {
   console.clear()
