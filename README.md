@@ -1,4 +1,4 @@
-# Location Tracker Server
+# Chat app server
 
 ### powered by web sockets.
 
