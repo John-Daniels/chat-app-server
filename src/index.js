@@ -10,13 +10,7 @@ import initializeSockets from "./controllers/sockets/socket.controller.js"
 const port = process.env.PORT || 5000
 const app = express()
 
-app.get("/", (req, res) => {
-  res.send("welcome to my chat-app server")
-})
-
-app.get("/test", (req, res) => {
-  res.send("welcome to my chat-app server")
-})
+app.use(express.static('web'))
 
 const server = http.createServer(app)
 

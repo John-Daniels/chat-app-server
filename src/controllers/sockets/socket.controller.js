@@ -57,7 +57,7 @@ export default function (server) {
       }
     });
 
- client.on("logout", () => {
+    client.on("logout", () => {
       console.log("client disconnect", client.id);
 
       const user = getUser(client.id);
@@ -98,7 +98,5 @@ export default function (server) {
 
       removeUser(client.id);
     });
-
-
   });
 }
