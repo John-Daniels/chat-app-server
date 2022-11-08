@@ -58,7 +58,7 @@ export default function (server) {
     });
 
     client.on("logout", () => {
-      console.log("client disconnect", client.id);
+      console.log("client logout", client.id);
 
       const user = getUser(client.id);
       console.log("removed", user);
@@ -67,7 +67,7 @@ export default function (server) {
         const { room } = user;
         io.to(room).emit(
           "message-recieve",
-          generateMessage("Admin", `${user.username} has left!`)
+          generateMessage(`${user.username} has left!`)
         );
         io.to(room).emit("roomData", {
           room,
@@ -88,7 +88,7 @@ export default function (server) {
         const { room } = user;
         io.to(room).emit(
           "message-recieve",
-          generateMessage("Admin", `${user.username} has left!`)
+          generateMessage(`${user.username} has left!`)
         );
         io.to(room).emit("roomData", {
           room,

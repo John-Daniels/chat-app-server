@@ -19,8 +19,8 @@ export const getUsersInRoom = (id, room) => {
   // return usersInRoom.filter((u) => u.id !== id)
   return usersInRoom;
 };
-export const generateMessage = (username, message) => ({
-  username,
+export const generateMessage = (message) => ({
+  username: "Admin",
   message,
   time: new Date().toDateString(),
 });
