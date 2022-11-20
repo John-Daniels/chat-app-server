@@ -6,6 +6,8 @@ import {
   getUser,
   getUsersInRoom,
   removeUser,
+  join,
+  isDuplicate,
 } from "../users/user.controller.js";
 
 export default function (server) {
@@ -22,27 +24,16 @@ export default function (server) {
       const { room, username } = data;
       if (!room) return;
 
-      console.log(data);
-      const user = addUser({ id: client.id, ...data });
-      client.join(room);
-
-      client.broadcast
-        .to(user.room)
-        .emit(
-          "message-recieve",
-          generateMessage("Admin", `${user.username} has joined!`)
-        );
-
-      io.to(user.room).emit("roomData", {
-        room,
-        users: getUsersInRoom(client.id, room),
-      });
-      io.sockets.to(client.id).emit("userData", { username });
+      if (isDuplicate(username)) {
+        client.emit("join-error", { message: `username taken` });
+      } else {
+        join(io, client, data);
+      }
     });
 
     client.on("message", (data) => {
       const user = getUser(client.id);
-      console.log(data);
+      // console.log(data);
 
       if (user?.room) {
         client.broadcast.to(user.room).emit("message-recieve", data);
@@ -51,7 +42,7 @@ export default function (server) {
 
     client.on("type", (data) => {
       const user = getUser(client.id);
-      console.log(user);
+      // console.log(user);
       if (user?.room) {
         client.broadcast.to(user.room).emit("typeing", data);
       }
