@@ -36588,7 +36588,7 @@ s===$&&A.b()
 s.fG("logout",null)
 this.aB()},
 A1(){var s,r,q=this
-try{q.e=A.anN("https://flutter-chat-app.onrender.com/",A.aa(["transports",A.a(["websocket"],t.s),"autoConnect",!0],t.N,t.z))
+try{q.e=A.anN("http://192.168.0.126:5000",A.aa(["transports",A.a(["websocket"],t.s),"autoConnect",!0],t.N,t.z))
 A.ep("trying connnection")
 q.e.yK()
 q.e.dM(0,"connect",new A.aaN(q))}catch(r){s=A.ar(r)
@@ -36698,7 +36698,7 @@ s===$&&A.b()
 s.dM(0,"joined",new A.abq())
 this.d.dM(0,"join-error",new A.abr())},
 A1(){var s,r,q=this
-try{q.d=A.anN("https://flutter-chat-app.onrender.com/",A.aa(["transports",A.a(["websocket"],t.s),"autoConnect",!0],t.N,t.z))
+try{q.d=A.anN("http://192.168.0.126:5000",A.aa(["transports",A.a(["websocket"],t.s),"autoConnect",!0],t.N,t.z))
 A.ep("trying connnection")
 q.d.yK()
 q.d.dM(0,"connect",new A.abn(q))}catch(r){s=A.ar(r)
